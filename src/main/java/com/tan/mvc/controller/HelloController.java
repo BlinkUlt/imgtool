@@ -30,7 +30,7 @@ public class HelloController {
 
     @RequestMapping("/mvc")
     public String helloMvc() {
-        return "home";
+        return "system/home";
     }
 
     @ResponseBody
@@ -53,7 +53,7 @@ public class HelloController {
 
     @RequestMapping(value = "/main")
     public String main() {
-        return "home";
+        return "system/home";
     }
 
     @RequestMapping(value = "/logout")
@@ -70,7 +70,7 @@ public class HelloController {
         User user = new User("李四", "123");
         //测试事务方法
         userService.insert(user);
-        return "login";
+        return "system/login";
     }
 
     @RequestMapping(value = "/doUpload", method = RequestMethod.POST)
@@ -83,13 +83,13 @@ public class HelloController {
             String randomName = UUID.randomUUID().toString() + "." + ext;
             FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath, randomName));
             log.debug("------------Process File:{},Size:{}--------------", filePath + randomName, size);
-            return "success";
+            return "system/success";
         }
-        return "upload";
+        return "system/upload";
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String upload() throws IOException {
-        return "upload";
+        return "system/upload";
     }
 }
